@@ -1,33 +1,88 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const score = 0;
+const win_lose = '';
 
-  return (
+const PLAYER_CHOICE = [
+  {
+      id: 'p1',
+      title: 'rock',
+  },
+  {
+      id: 'p2',
+      title: 'paper',
+  },
+  {
+      id: 'p3',
+      title: 'scissors',
+  }
+];
+
+const HOUSE_CHOICE = [
+  {
+      id: 'h1',
+      title: 'rock',
+  },
+  {
+      id: 'h2',
+      title: 'paper',
+  },
+  {
+      id: 'h3',
+      title: 'scissors',
+  }
+];
+
+function Choice() {
+  if (PLAYER_CHOICE.id === "p2" && HOUSE_CHOICE.id === "h1") {
+    score ++;
+    win_lose = 'You win';
+  }
+  else if (PLAYER_CHOICE.id === "p3" && HOUSE_CHOICE.id === "h1") {
+    win_lose = 'You lose';
+  }
+  else if (PLAYER_CHOICE.id === "p1" && HOUSE_CHOICE.id === "h2") {
+    win_lose = 'You lose';
+  }
+  else if (PLAYER_CHOICE.id === "p3" && HOUSE_CHOICE.id === "h2") {
+    score ++;
+    win_lose = 'You win';
+  }
+  else if (PLAYER_CHOICE.id === "p1" && HOUSE_CHOICE.id === "h3") {
+    score ++;
+    win_lose = 'You win';
+  }
+  else if (PLAYER_CHOICE.id === "p2" && HOUSE_CHOICE.id === "h3") {
+    win_lose = 'You lose';
+  }
+  else {
+    win_lose = 'You tied';
+  }
+}
+
+function App() {
+return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div>
+      <h2>
+        <p>Rock</p>
+        <p>Paper</p>
+        <p>Scissors</p>
+      </h2>
+    </div>
+    <div>
+      <h3><p>Score:</p></h3>
+      <h1><p>score</p></h1>
+    </div>
+    <div>
+      <button>Rock</button>
+      <button>Paper</button>
+      <button>Scissors</button>
+    </div>
+    <div>
+    <button>Rules</button>
+    </div>
     </>
   )
 }
